@@ -17,6 +17,10 @@ use RakutenRws_Client; //楽天api////
 
 class LibraryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth_login');
+    }
    
     public function index()
     {
@@ -38,8 +42,6 @@ class LibraryController extends Controller
         $key = $request->key_word;
         $on = $request->on;//貸出中
         $off = $request->off;//貸出可能
-        
-        //dd($on,$off);
         
         if (($on == "on") && ($off == "off"))
         {
@@ -127,7 +129,7 @@ class LibraryController extends Controller
         
         $books = Book::all();
         $messages = [$book->title.'を貸出登録しました'];
-        return view('library.list',[
+        return view('library.list.list',[
             'books' => $books,
             'messages' => $messages,
             ]);
@@ -146,7 +148,7 @@ class LibraryController extends Controller
         
         $books = Book::all();
         $messages = [$book->title.'を返却しました'];
-        return view('library.list',[
+        return view('library.list.list',[
             'books' => $books,
             'messages' => $messages,
             ]);
@@ -241,7 +243,7 @@ class LibraryController extends Controller
         $books = Book::all();
         
         $messages = [$book->title.'を登録しました'];
-        return view('library.list',[
+        return view('library.list.list',[
             'books' => $books,
             'messages' => $messages,
             ]);

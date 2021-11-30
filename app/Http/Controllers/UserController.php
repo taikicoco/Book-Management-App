@@ -18,7 +18,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     
+    
+    public function __construct()
+    {
+        $this->middleware('auth_login');
+    }
     
     public function users_list()
     {
@@ -28,12 +32,7 @@ class UserController extends Controller
                     ]);
     }
     
-    public function users_add()
-    {
-        
-    }
-    
-     public function users_edit($id)
+    public function users_edit($id)
     {
         $auth = Auth::user();
         $user_id = $auth->id;
@@ -91,6 +90,7 @@ class UserController extends Controller
                 
                 $user->name = $request->name;
                 $ps = $request->password;
+                $messages = [];
                 
                 if(filled($ps)){
                     $user->password = bcrypt($request->password);

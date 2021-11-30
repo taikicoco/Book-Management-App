@@ -13,7 +13,7 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         @foreach($messages as $message)
-        <h4 class="m-0 font-weight-bold text-danger">{{$message}}</h4>
+        <h4 class="m-0 font-weight-bold text-dark">{{$message}}</h4>
         @endforeach
     </div>
 </div>
