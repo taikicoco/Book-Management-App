@@ -46,8 +46,7 @@
                     <!--<div class="col-lg-6">-->
                         <div class="p-5">
                             @include('layouts.messages')
-                            acount_name = 1234<br>
-                            password = 12345678
+                            
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">ログイン</h1>
                             </div>

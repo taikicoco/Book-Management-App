@@ -50,9 +50,7 @@ class LibraryController extends Controller
             {
                 $books = Book::where('title', 'LIKE', "%$key%")
     		                    ->get();
-            }
-        	else
-        	{
+            }else{
         		$books = Book::all();
     	    }
         }
@@ -64,9 +62,7 @@ class LibraryController extends Controller
     		    $books = Book::Where('book_flag',1)
     		                        ->where('title', 'LIKE', "%$key%")
                                     ->get();
-        	}
-        	else
-        	{
+        	}else{
         		$books = Book::where('book_flag',1)
         		                    ->get();
     	    }
@@ -79,8 +75,7 @@ class LibraryController extends Controller
     		    $books = Book::Where('book_flag',0)   
     		                        ->where('title', 'LIKE', "%$key%")
     		                        ->get();
-    	    }else
-    	    {
+    	    }else{
                 $books = Book::where('book_flag',0)
                                     ->get();
     		}
@@ -95,7 +90,7 @@ class LibraryController extends Controller
             $key = "なし";
         }
         
-        $text = "条件:".$text.": key_word:".$key."の検索結果";
+        $text = "条件:".$text.": 検索ワード:{".$key."}の検索結果";
         
         $messages = [$text];
         return view('library.list.list',[
@@ -135,9 +130,6 @@ class LibraryController extends Controller
             ]);
         
     }
-    
-    
-
     
     public function return_book($id)
     {
@@ -193,11 +185,12 @@ class LibraryController extends Controller
         
 
         $isbn = $request->isbn;
+        //dd($isbn);
 
         // IchibaItemSearch API から、指定条件で検索
         if(!empty($isbn)){ 
-        $response = $client->execute('BooksTotalSearch', array(
-            'isbnjan' => $isbn,
+        $response = $client->execute('BooksBookSearch', array(
+            'isbn' => $isbn,
         ));
        
         // レスポンスが正しいかを isOk() で確認
@@ -207,7 +200,18 @@ class LibraryController extends Controller
         foreach ($response as $item){
             $items[] = array(
                 'title' => $item['title'],
+                'titleKana' => $item['titleKana'],
                 'author' => $item['author'],
+                'authorKana' => $item['authorKana'],
+                'publisherName' => $item['publisherName'],
+                'salesDate' => $item['salesDate'],
+                'seriesName' => $item['seriesName'],
+                'subTitle' => $item['subTitle'],
+                'subTitleKana' => $item['subTitleKana'],
+                'largeImageUrl' => $item['largeImageUrl'],
+                'itemPrice' => $item['itemPrice'],
+                'itemUrl' => $item['itemUrl'],
+                'isbn' => $item['isbn'],
             );
         }
         if (empty($items)){
@@ -225,11 +229,9 @@ class LibraryController extends Controller
             ]);
           }
         }
-       
         return view('library.register.search',[
             'items' => $items,
             ]);
-       
     }
     
     
@@ -237,7 +239,18 @@ class LibraryController extends Controller
     {
         $book = new Book;
         $book->title = $request->title;
-        $book->author = $request->author;
+        $book->titleKana = $request->titleKana ;
+        $book->author = $request->author ;
+        $book->authorKana = $request->authorKana ;
+        $book->publisherName = $request->publisherName ;
+        $book->salesDate = $request->salesDate ;
+        $book->seriesName = $request->seriesName ;
+        $book->subTitle = $request->subTitle ;
+        $book->subTitleKana = $request->subTitleKana ;
+        $book->largeImageUrl = $request->largeImageUrl ;
+        $book->itemPrice = $request->itemPrice ;
+        $book->itemUrl = $request->itemUrl ;
+        $book->isbn = $request->isbn ;
         $book->save();
         
         $books = Book::all();

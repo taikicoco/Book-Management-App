@@ -4,7 +4,7 @@
 
 <div class="card shadow mb-4">
  <div class="card-header py-3 d-flex">
-  <h2 class="m-0 font-weight-bold text-primary">search</h6>
+  <h2 class="m-0 font-weight-bold text-primary">書籍を検索する</h6>
  </div>
 
 <div class=" container">  	
@@ -14,12 +14,11 @@
 
 <div class="form-group row">
     <div class="col">
-    {{ Form::label('isbn', 'ISBN*:') }}
+    {{ Form::label('isbn', 'ISBNコードを入力してください。') }}
     {{ Form::text('isbn',old('isbn'),['class' => 'form-control']) }} 
     </div>
 </div>
  <hr>
- 
    <br>
  {{ Form::submit('検索',['class' => 'btn btn btn-primary']) }}
  {{ Form::close() }}

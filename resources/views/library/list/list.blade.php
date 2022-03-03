@@ -4,7 +4,7 @@
 
 <div class="card shadow mb-4">
   <div class="card-header py-3 d-flex justify-content-between">
-    <h2 class="m-0 font-weight-bold text-primary">BookList</h6>
+    <h2 class="m-0 font-weight-bold text-primary">書籍一覧</h6>
     
     <!-- Topbar Search -->
     {{Form::open(['url' => route('library.search')])}}
@@ -29,9 +29,10 @@
         <thead>
           <tr>
               <th >ID</th>
-              <th >Title</th>
+              <th >本のタイトル</th>
               <th>著者</th>
               <th>状態</th>
+              <th>書籍画像</th>
               
               <th></th>
           </tr>
@@ -46,7 +47,7 @@
           @else
           <tr>
           @endif
-            <td scope="col" >{{$book->id}}</th>
+            <td scope="col" >{{$book->id}}</td>
             <td >{{$book->title}}</td>
              <td>{{$book->author}}</td>
             @if($book->book_flag ==0)
@@ -54,6 +55,7 @@
             @else
             <td>貸出中</td>
             @endif
+            <td><img src="{{$book->largeImageUrl}}" height="100"></td>
             <td align="center"><a href="{{ route('library.detail',['id'=>$book->id]) }}" class="btn btn-sm btn-space btn-primary margin5px">詳細</a></td>
           </tr>
         <tbody>
@@ -65,7 +67,7 @@
     </div>
     @endif
     </div>
-    <!--{$tasks->links() }-->
+    
   </div>
 </div>
 

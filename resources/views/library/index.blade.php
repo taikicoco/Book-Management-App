@@ -4,7 +4,7 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h2 class="m-0 font-weight-bold text-primary">Library</h2>
+        <h2 class="m-0 font-weight-bold text-primary">書籍情報</h2>
     </div>
     <br>
     

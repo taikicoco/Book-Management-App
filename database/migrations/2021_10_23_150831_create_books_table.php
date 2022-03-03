@@ -17,11 +17,20 @@ class CreateBooksTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps(0);
             
-            $table->string('title');
-            $table->string('author')->nullable($value = true);
-            // $table->string('book_state')->nullable($value = true);
-            // $table->string('book_category')->nullable($value = true);
-            // $table->integer('book_number')->nullable($value = true);
+            $table->string('title')->nullable(true);
+            $table->string('titleKana')->nullable(true);
+            $table->string('author')->nullable(true);
+            $table->string('authorKana')->nullable(true);
+            $table->string('itemPrice')->nullable(true);
+            $table->string('itemUrl')->nullable(true);
+            $table->string('publisherName')->nullable(true);
+            $table->string('salesDate')->nullable(true);
+            $table->string('seriesName')->nullable(true);
+            $table->string('subTitle')->nullable(true);
+            $table->string('subTitleKana')->nullable(true);
+            $table->string('largeImageUrl')->nullable(true);
+            $table->string('isbn')->nullable(true);
+            
             $table->integer('book_flag')->default(0);
             $table->integer('book_order')->default(0);;
             $table->string('borrow_acount')->nullable($value = true);

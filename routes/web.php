@@ -66,24 +66,3 @@ Route::get('invalid','AppController@invalid')->name('invalid');
 Route::group(['middleware' => 'auth_login'], function () {
     //
 });
-
-
-
-
-
-
-
-
-// //task機能
-//
-//Route::get('task/list','AppController@task_list')->name('task.list');
-// Route::post('task/list','AppController@getSearch')->name('admin.index.sort');
-// Route::get('task/add/{id}','AppController@task_add')->name('task.add');
-// Route::post('task/add/{id}','AppController@task_add_form')->name('task.add.form');
-// Route::post('task/create/{id}','AppController@task_create')->name('task.create');
-// Route::get('task/edit/{id}','AppController@task_edit')->name('task.edit');
-// Route::post('task/edit/{id}','AppController@task_update')->name('task.update');
-
-// //QR画像ダウンロード機能
-// Route::get('qr','AppController@qr_list')->name('qr.list');
-// Route::post('qr','AppController@qr_download')->name('qr.download');
