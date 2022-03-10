@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title> Library </title>
+    <title> Book Management </title>
      <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
 
@@ -55,7 +55,7 @@
                             {!! Form::open(['route' => 'signup.post']) !!}
                             
                             <div class="form-group">
-                                {!! Form::label('key', 'key') !!}
+                                {!! Form::label('key', '共通キー') !!}
                                 {!! Form::text('key','', ['class' => 'form-control']) !!}
                             </div>
                         

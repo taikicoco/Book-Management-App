@@ -5,7 +5,7 @@
 
 <div class="card shadow mb-4">
  <div class="card-header py-3 d-flex">
-  <h2 class="m-0 font-weight-bold text-primary">register</h6>
+  <h2 class="m-0 font-weight-bold text-primary">検索情報を登録</h6>
  </div>
 
 <div class=" container">  	

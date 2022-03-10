@@ -117,7 +117,7 @@ class LibraryController extends Controller
         $book->save();
         
         //貸出履歴を登録
-        $history = BookHistory::firstOrNew(['id' => 0]);
+        $history = new BookHistory;
         $history->book_id = $id;
         $history->borrow_acount =  $auth->email;
         $history->save();
