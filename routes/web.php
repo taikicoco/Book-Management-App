@@ -12,7 +12,7 @@
 */
 
 //toppage
-Route::get('/','AppController@index')->name('admin.index');
+Route::get('/','LibraryController@application_index')->name('admin.index');
 
 //ユーザー登録機能
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');

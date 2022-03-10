@@ -27,6 +27,11 @@ class LibraryController extends Controller
         return view('library.index');
     }
     
+    public function application_index()
+    {
+        return view('index');
+    }
+    
     public function all_list()
     {
         $books = Book::all();
